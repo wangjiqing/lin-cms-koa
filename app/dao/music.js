@@ -18,6 +18,12 @@ class Music {
     // 利用 ES6 的析构语法对参数进行解析
     return music.update({ ...params });
   }
+
+  static async deleteMusicById (id) {
+    return MusicModel.destroy({
+      where: { id }
+    });
+  }
 }
 
 export { Music as MusicDao };

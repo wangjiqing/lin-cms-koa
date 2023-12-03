@@ -18,6 +18,12 @@ class Sentence {
     // 利用 ES6 的析构语法对参数进行解析
     return sentence.update({ ...params });
   }
+
+  static async deleteSentenceById (id) {
+    return SentenceModel.destroy({
+      where: { id }
+    });
+  }
 }
 
 export { Sentence as SentenceDao };

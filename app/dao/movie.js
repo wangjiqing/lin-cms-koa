@@ -17,6 +17,12 @@ class Movie {
     // 利用 ES6 的析构语法对参数进行解析
     return movie.update({ ...params });
   }
+
+  static async deleteMovieById (id) {
+    return MovieModel.destroy({
+      where: { id }
+    });
+  }
 }
 
 export { Movie as MovieDao };

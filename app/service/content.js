@@ -56,6 +56,23 @@ class Content {
         throw new NotFound({ msg: '内容类型不存在' });
     }
   }
+
+  static async deleteContent (id, type) {
+    switch (type) {
+      case 100:
+        await MovieDao.deleteMovieById(id);
+        break;
+      case 200:
+        await MusicDao.deleteMusicById(id);
+        break;
+      case 300:
+        await SentenceDao.deleteSentenceById(id);
+        break;
+      default:
+        throw new NotFound({ msg: '内容类型不存在' });
+    }
+
+  }
 }
 
 export { Content as ContentService };
