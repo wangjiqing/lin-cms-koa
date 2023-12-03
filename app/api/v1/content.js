@@ -51,6 +51,7 @@ contentApi.linPut(
     mount: true
   },
   groupRequired,
+  logger('{user.username}修改了一个期刊内容'),
   async ctx => {
     const v = await new EditContentValidator().validate(ctx);
     const id = v.get('path.id');
@@ -65,14 +66,24 @@ contentApi.linPut(
 /**
  * 删除期刊内容
  */
-contentApi.delete('/:id', async ctx => {
-  const v = await new DeleteContentValidator().validate(ctx);
-  const id = v.get('path.id');
-  const type = v.get('query.type');
-  await ContentService.deleteContent(id, type);
-  ctx.success({
-    msg: '期刊删除成功'
+contentApi.linDelete(
+  'delContent',
+  '/:id',
+  {
+    permission: '删除期刊内容',
+    module: '内容管理',
+    mount: true
+  },
+  groupRequired,
+  logger('{user.username}删除了一个期刊内容'),
+  async ctx => {
+    const v = await new DeleteContentValidator().validate(ctx);
+    const id = v.get('path.id');
+    const type = v.get('query.type');
+    await ContentService.deleteContent(id, type);
+    ctx.success({
+      msg: '期刊删除成功'
+    });
   });
-});
 
 module.exports = { contentApi };
