@@ -38,6 +38,24 @@ class Content {
         throw new NotFound({ msg: '内存类型不存在' });
     }
   }
+
+  static async editContent (id, params) {
+    switch (params['type']) {
+      case 100:
+        delete params['url'];
+        await MovieDao.editMovie(id, params);
+        break;
+      case 200:
+        await MusicDao.editMusic(id, params);
+        break;
+      case 300:
+        delete params['url'];
+        await SentenceDao.editSentence(id, params);
+        break;
+      default:
+        throw new NotFound({ msg: '内容类型不存在' });
+    }
+  }
 }
 
 export { Content as ContentService };

@@ -32,4 +32,14 @@ class AddContentValidator extends LinValidator {
   }
 }
 
-export { AddContentValidator };
+class EditContentValidator extends AddContentValidator {
+  constructor () {
+    super();
+    this.id = [
+      new Rule('isNotEmpty', '期刊内容id不能为空'),
+      new Rule('isInt', '期刊内容id必须是数字切大于0', { min: 1 })
+    ];
+  }
+}
+
+export { AddContentValidator, EditContentValidator };
