@@ -20,6 +20,10 @@ Music.init(
       //   return config.getItem('localMainImgUrlPrefix') + image;
       // }
     },
+    url: {
+      type: Sequelize.STRING(500),
+      allowNull: true
+    },
     content: {
       type: Sequelize.STRING(300),
       allowNull: true
