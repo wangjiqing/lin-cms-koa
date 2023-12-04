@@ -71,7 +71,6 @@ class Content {
       default:
         throw new NotFound({ msg: '内容类型不存在' });
     }
-
   }
 }
 
