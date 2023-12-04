@@ -9,6 +9,12 @@ class Flow {
       status: v.get('body.status')
     });
   }
+
+  static async getFlowList () {
+    return FlowModel.findAll({
+      order: ['index'] // index 排序
+    });
+  }
 }
 
 export { Flow as FlowDao };
