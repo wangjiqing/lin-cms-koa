@@ -14,11 +14,11 @@ Music.init(
       autoIncrement: true
     },
     image: {
-      type: Sequelize.STRING(64)
-      // get () {
-      //   const image = this.getDataValue('image');
-      //   return config.getItem('localMainImgUrlPrefix') + image;
-      // }
+      type: Sequelize.STRING(64),
+      get () {
+        const image = this.getDataValue('image');
+        return config.getItem('localMainImgUrlPrefix') + image;
+      }
     },
     url: {
       type: Sequelize.STRING(500),

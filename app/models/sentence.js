@@ -1,5 +1,6 @@
 import { Model, Sequelize } from 'sequelize';
 import sequelize from '../libs/db';
+import { config } from 'lin-mizar';
 
 class Sentence extends Model {
 
@@ -13,11 +14,11 @@ Sentence.init(
       autoIncrement: true
     },
     image: {
-      type: Sequelize.STRING(64)
-      // get () {
-      //   const image = this.getDataValue('image');
-      //   return config.getItem('localMainImgUrlPrefix') + image;
-      // }
+      type: Sequelize.STRING(64),
+      get () {
+        const image = this.getDataValue('image');
+        return config.getItem('localMainImgUrlPrefix') + image;
+      }
     },
     content: {
       type: Sequelize.STRING(300),

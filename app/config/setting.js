@@ -3,6 +3,7 @@
 module.exports = {
   port: 5001,
   siteDomain: 'http://localhost:5001',
+  localMainImgUrlPrefix: 'http://localhost:5001/assets/',
   countDefault: 10,
   pageDefault: 0,
   apiDir: 'app/api',

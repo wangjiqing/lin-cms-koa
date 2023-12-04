@@ -1,7 +1,7 @@
 import { MovieDao } from '../dao/movie';
 import { MusicDao } from '../dao/music';
 import { SentenceDao } from '../dao/sentence';
-import { NotFound } from 'lin-mizar';
+import { config, NotFound } from 'lin-mizar';
 
 class Content {
   static async getContentList () {
@@ -40,6 +40,9 @@ class Content {
   }
 
   static async editContent (id, params) {
+    // 编辑的时候图片路径特殊处理
+    params['image'] = params['image'].split(config.getItem('localMainImgUrlPrefix'))[1];
+
     switch (params['type']) {
       case 100:
         delete params['url'];
