@@ -26,7 +26,7 @@ class Flow {
     await flow.update({ index, type, art_id, status });
   }
 
-  static async delFlow (id){
+  static async delFlow (id) {
     const flow = await FlowModel.findByPk(id);
     if (!flow) {
       throw new NotFound();
