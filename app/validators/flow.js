@@ -22,4 +22,14 @@ class AddFlowValidator extends LinValidator {
   }
 }
 
-export { AddFlowValidator };
+class EditFlowValidator extends AddFlowValidator {
+  constructor () {
+    super();
+    this.id = [
+      new Rule('isNotEmpty', '最新期刊id不能为空'),
+      new Rule('isInt', '最新期刊id必须是数字切大于0', { min: 1 })
+    ];
+  }
+}
+
+export { AddFlowValidator, EditFlowValidator };

@@ -1,4 +1,5 @@
 import { FlowModel } from '../models/flow';
+import { NotFound } from 'lin-mizar';
 
 class Flow {
   static async createFlow (v) {
@@ -14,6 +15,15 @@ class Flow {
     return FlowModel.findAll({
       order: ['index'] // index 排序
     });
+  }
+
+  static async editFlow (id, index, type, art_id, status) {
+    const flow = await FlowModel.findByPk(id);
+    if (!flow) {
+      throw new NotFound();
+    }
+
+    await flow.update({ index, type, art_id, status });
   }
 }
 
